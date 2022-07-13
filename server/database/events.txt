@@ -1,0 +1,1 @@
+{"meterId": 1, "event": "1","type":"tampering","date":"Mon Feb 28 10:35:23 2022"}

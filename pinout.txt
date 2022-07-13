@@ -1,0 +1,100 @@
+
+
+
+/**************** Display ***************/
+#define RIGHT_BUTTON	5
+#define LEFT_BUTTON	15
+
+
+#define DC_TFT		24
+#define RST_TFT 	25
+#define CS_TFT		18
+#ifndef TFT_SPI_HARDWARE  
+#define SDIN_TFT	20	//not used
+#define SCLK_TFT  	21	//not used
+
+
+
+
+/**************** STPM33 ***************/
+/*
+
+Move to Wiring Section 
+                            -------------------
+                           |  Wiring	       |
+                            ------------------- 
+
+         
+They're in order from gpio17 to gpio11 no need to trace  the pins & the wires
+
+STPM33	-> |STPM33_CS_Pin	|STPM33_SYN_Pin	|STPM33_EN_Pin	|3v3	|STPM33_MOSI	|STPM33_MISO	|STPM33_SCLK	|
+RPI   	-> |gpio17		|gpio27		|gpio22 	|none	|gpio10		|gpio9		|gpio11		|
+
+                            -------------------
+                           |  jumpers colors   |
+                            ------------------- 
+         
+They're in order from gpio17 to gpio11 no need to trace  the pins & the wires
+
+STPM33 	->	white	|	grey	|	purple	|	 3v3	|	blue	|	green	|	orange
+RPI 	->	gpio17	|	gpio27	|	gpio22 	| 	none	| 	gpio10	|	gpio9	|	gpio11	
+
+ 
+                             ------------------
+                            |  STPM33 pinout   |
+                             ------------------                                                     
+
+    SPI                                                             
+                1 NC     3 Gnd   5 SCS   7 NC    9 NC                                        
+                2 MOSI   4 MISO  6 SCL   8 SYN   10 Vcc                                  
+
+    Digital IO
+                1 Int1      3 Led2      5 Led1      7 Ckin      
+                2 Int2      4 En/Rst    6 Gnd       8 Ckout/ZCR
+                  
+/* GPIOs */
+#define STPM33_CS_Pin 17
+#define STPM33_SYN_Pin 27
+#define STPM33_EN_Pin 22
+
+                   --------------------------------------------                            
+
+                         -----------------------
+                        |  RaspberryPi pinout   |
+                         -----------------------                                                     
+
+Note that 
+	we have to use spi0.x (for example: spidev0.0) for stpm33 as spi0.x can only select SPI_MODE_3 
+	which is needed for stpm33 unlike spi1.x which can't apply SPI_MODE_3 
+
+spi0.0 pinout in RaspberryPi
+ * SCLK    11	    
+ * MOSI    10        
+ * MISO    9	   
+
+*/	
+
+/**************** Tampering ***************/
+/*
+Tampering Consist of 2 components LIMIT Switch and LED 
+LIMIT Switch has 3 pins (please checkout to know the order of the pins in the Limit Switch 
+
+pin is connected to the GND
+pin is floating (not connected)
+pin is connected to the SoC (check the pinout for RPI)
+
+LED has 2 pins (anode & cathode)
+don't forgeet to use 330-ohms resistor with LED 
+Cathode pin is connected to GND 
+Anode pin is connected to the SoC  (check the pinout for RPI)
+
+Pinout for RPI:
+-------------------
+*/
+#define TAMPER_LIMIT_SWITCH					6
+#define TAMPER_LED						26
+
+
+
+
+
