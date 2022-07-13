@@ -33,7 +33,7 @@ json formate:
 sqlite3 *db;
 char *err_msg = 0;
 int db_rc;
-#define meterId 40
+#define meterId 43
 #define no_of_rows_to_keep 5
 long total_rows_no;
 
