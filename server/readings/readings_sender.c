@@ -130,7 +130,7 @@ int send_readings_to_server()
 
 		if(curl) {
 
-		      snprintf(buf, sizeof(buf), "{\"meterId\":%d,\"date\":\"%s\",\"volt\" : %lf,\"electric_current\" :%lf, \"energy\" : %lf,\"activePower\":%lf}\n",meterId, "k", volt, current, energy, power);
+		      snprintf(buf, sizeof(buf), "{\"meterId\":%d,\"date\":\"%s\",\"volt\" : %lf,\"electric_current\" :%lf, \"energy\" : %lf,\"activePower\":%lf}\n",meterId,time_stamp , volt, current, energy, power);
 		      printf("\nRequest to server: %s\n",buf);
 		      //form Request
 		      const char* jsonObj = buf;
@@ -166,7 +166,7 @@ int send_readings_to_server()
 	        
 	        //return 1;
 	   	} //end if
-		printf("response: \n");
+		printf("\nResponse: \n");
 	    }//end while
 	}
 	else
